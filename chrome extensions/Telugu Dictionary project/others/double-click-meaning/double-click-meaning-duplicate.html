@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Double Click Meaning</title>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		
+</head>
+<body>
+	<div id="definition">
+		<button>Click me</button>
+	</div>
+	<div id="container">
+		<p>hello world! I am eswar</p>
+	</div>
+
+	<script type="text/javascript">
+	// $(document).ready(function() {
+	//     $("#definition button").click(function() {
+	//     	// console.log('button clicked');
+	//         // $(this).parent().hide(200);
+	//     });
+	    $("#container p").dblclick(function() {
+	    	// console.log('paragraph clicked')
+	        var txt = getSelectedText();
+	        console.log(txt);
+	        // $.get("/php/data/define.php", { q: txt }, function(data) {
+	        //     var $dataDiv = $("<div>"+data+"</div>").addClass("data");
+	        //     $("#definition").show(200)
+	        //         .contents("h3").text("Definition of: "+txt).parent()
+	        //         .contents("div.data").replaceWith($dataDiv).parent();
+	        // });
+	    });
+	});
+	function getSelectedText() {
+	    if (window.getSelection) return window.getSelection().toString();
+	    else if (document.getSelection) return document.getSelection();
+	    else if (document.selection) return document.selection.createRange().text;
+	}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+
+const translate = document.getElementById('translate');
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    // console.log('DOMContentLoaded');
+    console.log(translate);
+    // document.getElementsByClassName('meaning-hide')[0].style.display = 'none';
+    
+    translate.addEventListener('click', () => {
+        console.log('translation from english to telugu')
+    });
+});
+
+
+// window.addEventListener('load', () => {
+//     document.getElementsByClassName('meaning-hide')[0].style.display = 'none';
+// })
+
+------------------------------------------------------------
+
+const translate = document.querySelector('#translate');
+const meaningHide = document.querySelector('.meaning-hide');
+const spinnerHide = document.querySelector('.spinner-hide');
+const spinner = document.querySelector('spinner');
+
+translate.addEventListener('click', getMeaning);
+document.addEventListener('load', hideOnLoad);
+hideOnLoad();
+
+// window.onload = () => {
+//     translate.addEventListener('click', getMeaning);
+//     document.addEventListener('load', hideOnLoad);
+//     hideOnLoad();
+// }
+
+function getMeaning(){
+    hideDescription();
+    hideMeaningElement();
+    startSpinning();
+    const engWord = document.getElementById('english_input').value;
+    const URL = 'http://localhost:3000/';
+    fetch(URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({word: engWord})
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res);
+        setInnerText(res.translatedWord, res.translatedMeaning);
+        stopSpinning();
+        showMeaningElement();
+        expandContainerHeight
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+function hideOnLoad(){
+    hideMeaningElement();
+    stopSpinning();
+}
+
+function expandContainerHeight(){
+    document.querySelector('.container').style.height = '300px';
+}
+
+function hideMeaningElement() {
+    meaningHide.style.display = 'none';
+}
+
+function showMeaningElement(){
+    document.querySelector('.meaning-hide').style.display = 'block';
+}
+
+function setInnerText(telWord, telMeaning){
+    document.getElementById('telugu_word').innerText = telWord;
+    document.getElementById('telugu_meaning').innerText = telMeaning;
+}
+
+function hideDescription(){
+    var y = document.getElementById("description");
+    y.style.display = "none";
+}
+
+function stopSpinning(){
+    spinnerHide.style.display = 'none';
+    spinner.style.visibility = 'hidden';
+    // document.querySelector('spinner-row').style.display = 'none';
+    // document.getElementById('spinner').style.visibility = 'hidden';
+}
+
+function startSpinning(){
+    spinnerHide.style.display = 'block';
+    spinner.style.visibility = 'visible';
+    // document.querySelector('spinner-row').style.display = 'block';
+    // document.getElementById('spinner').style.visibility = 'visible';
+}

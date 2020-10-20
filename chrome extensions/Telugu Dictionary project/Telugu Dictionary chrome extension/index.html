@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Telugu dictionary</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container m-0">
+
+            <!-- search input -->         
+            <div class="row mt-2 ml-1 mr-1">
+                <div class="col-lg-11 p-0">
+                    <form class="form-inline my-2 my-lg-0">
+                        <div class="input-group input-group-sm">
+                            <input type="search" class="form-control" id="english_input" placeholder="Search Word" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="translate">translate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- search input -->
+
+            <!-- description -->
+            <form id="description">
+                <div class="form-group ml-1">
+                    <small id="emailHelp" class="form-text">Translation & meaning</small>
+                </div>
+            </form>
+            <!-- description -->
+
+            <!-- spinner -->
+            <div class="row spinner-hide mt-2">
+                <div class="col">
+                    <div class="text-center">
+                          <div class="spinner-border text-secondary" id="spinner" style="visibility: hidden;" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                    </div> 	
+                </div>
+            </div>
+            <!-- spinner -->
+
+            <!-- translation & meaning -->
+            <div class="row text-center justify-content-center meaning-hide">
+                <div class="col col-lg-4 col-sm-4">
+                    <form class="form-group form-hide">
+                        <div class="form-group" id="meanings">
+                            <small id="emailHelp" class="form-text text-muted">Translation |</small>
+                            <label for="exampleInputPassword1" id="telugu_word"></label>
+                            <hr>
+                            <small id="emailHelp" class="form-text text-muted">Meaning |</small>
+                            <label for="exampleInputPassword1" id="telugu_meaning"></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- translation & meaning -->     
+        </div>
+        <script type="text/javascript" src="inputValidation.js"></script>
+        <script type="text/javascript" src="hidingElements.js"></script>
+        <script type="text/javascript" src="getMeaning.js"></script>
+        <script type="text/javascript" src="showElements.js"></script>
+    </body>
+</html>
